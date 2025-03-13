@@ -4,7 +4,7 @@
 
 This repository contains the code used to reproduce the results presented in the paper "Cross-Scenario Damaged Building Extraction Network: Methodology, Application, and Efficiency Using Single-Temporal HRRS Imagery" by Haifeng Wang, Wei He, Zhuohong Li and Naoto Yokoya.
 
-<div align="center"><img src="./imgs/framework.jpg" alt="Islahiye Earthquake region" width="70%"></div>
+<div align="center"><img src="./imgs/framework.jpg" alt="Islahiye Earthquake region" width="100%"></div>
 
 
 ## Table of Contents
