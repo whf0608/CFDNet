@@ -33,11 +33,10 @@ This repository contains the code used to reproduce the results presented in the
 
 ## Result
 1. Bay of Bengal cyclone region
-   ![Bay of Bengal cyclone region](http://47.121.214.152:8080/data/BayofBenga.png)
-   <img src="图片路径" alt="替代文字" width="宽度值" height="高度值">
+   <img src="http://47.121.214.152:8080/data/BayofBenga.png" alt="Bay of Bengal cyclone region" width="646" height="368">
 2. Turkoglu Earthquake region
-   ![Bay of Bengal cyclone region](http://47.121.214.152:8080/data/Turkoglu.png)
-3. Islahiye Earthquake region
-   ![Bay of Bengal cyclone region](http://47.121.214.152:8080/data/Islahiye.png)
-4. Florida Hurricane region
-   ![Bay of Bengal cyclone region](http://47.121.214.152:8080/data/Florida.png)
+    <img src="http://47.121.214.152:8080/data/Turkoglu.png" alt="Turkoglu Earthquake region" width="646" height="368">
+4. Islahiye Earthquake region
+    <img src="http://47.121.214.152:8080/data/Islahiye.png" alt="Islahiye Earthquake region" width="646" height="368">
+6. Florida Hurricane region
+    <img src="http://47.121.214.152:8080/data/Florida.png" alt="Florida Hurricane region" width="646" height="368">
