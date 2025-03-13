@@ -21,10 +21,9 @@ This repository contains the code used to reproduce the results presented in the
 
 1. Clone the repository
    ```sh
-   git clone https://github.com/yourusername/your-repo.git
+   git clone  https://github.com/whf0608/CFDNet.git
 
 2. Install dependencies
   ```sh
   pip install -r requirements.txt # or npm install, yarn install, etc. depending on your package manager
 
-## usage
