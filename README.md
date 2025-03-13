@@ -25,5 +25,5 @@ This repository contains the code used to reproduce the results presented in the
 
 2. Install dependencies
   ```sh
-  pip install -r requirements.txt # or npm install, yarn install, etc. depending on your package manager
+  pip install -r requirements.txt
 
