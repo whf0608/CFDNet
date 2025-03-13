@@ -37,6 +37,6 @@ This repository contains the code used to reproduce the results presented in the
 2. Turkoglu Earthquake region: Turkoglu Earthquake region: We illustrate Maxar's high-resolution satellite remote sensing data on February 22, 2023 and World Imagery Wayback historical imagery data for the Turkoglu earthquake region. In the 7.246 km2 area, we detect 61 damaged buildings with a total damage area of 5,083.39 m2.
     <img src="./imgs/Turkoglu.png" alt="Turkoglu Earthquake region" width="100%" height="368">
 4. Islahiye Earthquake region: Islahiye Earthquake region: We analyze the damage to buildings in the Islahiye region, which covers an area of 4.143 km2. Compared with the results annotated by Microsoft, we determine that the distribution of damaged buildings is more uniform. We detect 251 damaged buildings, showing significant differences from Microsoft s annotations.
-    <img src="./imgs/Islahiye.png" alt="Islahiye Earthquake region" width="100%" height="368">
+    <img src="./imgs/Islahiye.png" alt="Islahiye Earthquake region" width="100%" height="400">
 6. Florida Hurricane region: Florida Hurricane region: We analyze the damaged buildings in a storm-affected area of 1.899 km2 in Florida. In this area, we detect 535 buildings with no damage and 381 damaged buildings, with a total detected damaged area of 92,376.69 m2.
-    <img src="./imgs/Florida.png" alt="Florida Hurricane region" width="100%" height="368">
+    <img src="./imgs/Florida.png" alt="Florida Hurricane region" width="100%" height="500">
