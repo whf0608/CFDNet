@@ -32,7 +32,7 @@ This repository contains the code used to reproduce the results presented in the
 
 
 ## Result
-[Map View](www.whf68.top) 
+[Map View](http://www.whf68.top) 
 1. Bay of Bengal cyclone region: Bay of Bengal cyclone region: We compare Maxar's high-resolution remote sensing satellite data for the Bay of Bengal on February 17, 2023 and May 23, 2023. In the disaster area of the Bay of Bengal cyclone, which covers 0.926 km2, we detect 520 damaged buildings, with a combined damage area of 58,908.73 m2.
    <img src="./imgs/BayofBenga.png" alt="Bay of Bengal cyclone region" width="100%" height="368">
 2. Turkoglu Earthquake region: Turkoglu Earthquake region: We illustrate Maxar's high-resolution satellite remote sensing data on February 22, 2023 and World Imagery Wayback historical imagery data for the Turkoglu earthquake region. In the 7.246 km2 area, we detect 61 damaged buildings with a total damage area of 5,083.39 m2.
