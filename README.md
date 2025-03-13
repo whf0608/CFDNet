@@ -24,9 +24,9 @@ This repository contains the code used to reproduce the results presented in the
    git clone  https://github.com/whf0608/CFDNet.git
 
 2. Install dependencies
-  ```sh
-  pip install -r requirements.txt
-  ```
+   ```sh
+   pip install -r requirements.txt
+   ```
 
 ## Usage
 
