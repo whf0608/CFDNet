@@ -32,5 +32,12 @@ This repository contains the code used to reproduce the results presented in the
 
 
 ## Result
+1. Bay of Bengal cyclone region
+   ![Bay of Bengal cyclone region](http://47.121.214.152:8080/data/BayofBenga.png)
 
-
+2. Turkoglu Earthquake region
+   ![Bay of Bengal cyclone region](http://47.121.214.152:8080/data/Turkoglu.png)
+3. Islahiye Earthquake region
+   ![Bay of Bengal cyclone region](http://47.121.214.152:8080/data/Islahiye.png)
+4. Florida Hurricane region
+   ![Bay of Bengal cyclone region](http://47.121.214.152:8080/data/Florida.png)
