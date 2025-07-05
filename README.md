@@ -24,6 +24,7 @@ This repository contains the code used to reproduce the results presented in the
 ## Installing
 1. Clone the repository
    ```sh
+   git clone  https://github.com/whf0608/model_seg.git
    git clone  https://github.com/whf0608/CFDNet.git
 
 2. Install dependencies
