@@ -1,14 +1,7 @@
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-import socks
-import socket
-# socks.set_default_proxy(socks.SOCKS5, "192.168.205.183", 10810)
-# socket.socket = socks.socksocket
-
 import sys
-sys.path.append('/home/wanghaifeng/whf_work/work_sync/satellite_data/models_config/segment-anything/segment_anything')
-sys.path.append("/home/wanghaifeng/whf_work/work_sync/satellite_data/models_config/GeoSeg/")
-sys.path.append("/home/wanghaifeng/whf_work/work_sync/models_seg")
+sys.path.append("../models_seg")
 import streamlit as st
 from glob import glob
 import vdatasets
@@ -18,24 +11,13 @@ import optimizers_schedulers
 import json
 import train_model_mian
 from config import get_model,model_dic
-# from get_models import model_dic_geoseg,model_dic_mmseg
-# model_dic.update(model_dic_geoseg)
-# model_dic.update(model_dic_mmseg)
-
- # streamlit run app.py  --server.fileWatcherType none
-# if "visibility" not in st.session_state:
-#     st.session_state.visibility = "visible"
-#     st.session_state.disabled = False
 
 ms=[]
 for m in glob('model_config/model_*'):
     ms.append(m.split('/')[-1])
-# print("===============",ms)
 option = st.sidebar.selectbox(
         "select model",
         ms,
-        # label_visibility=st.session_state.visibility,
-        # disabled=st.session_state.disabled,
     )
     
 vistraining_p='model_config'
