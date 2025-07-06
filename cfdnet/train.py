@@ -1,10 +1,7 @@
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 import sys
-sys.path.append('../segmention_buildings/BuildFormer')
-sys.path.append('/home/wanghaifeng/whf_work/work_sync/satellite_data/models_config/segment-anything/segment_anything')
-sys.path.append("/home/wanghaifeng/whf_work/work_sync/satellite_data/models_config/GeoSeg/")
-sys.path.append("/home/wanghaifeng/whf_work/work_sync/models_seg")
+sys.path.append("../models_seg")
 from init import parse_args
 from train_model_mian import train
 
