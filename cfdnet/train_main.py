@@ -4,11 +4,10 @@ import json
 from init import *
 from train_model import train_model
 from tran_process import Train_Precess
-from models import get_model
+from models import get_model,model_dic
 from lossers import get_loss_function
 from vdatasets import get_dataloader
 from optimizers_schedulers import get_optimizer_scheduler, update_paramter
-from config import get_model,model_dic
 
 def train(show=None, args=None):
 
@@ -45,7 +44,9 @@ def train(show=None, args=None):
     ###3. 加载权重
     cfg['model_param'].update({"n_classes":n_classes})
     model = torch.nn.parallel.DataParallel(model_dic[cfg['model']](**cfg['model_param']))
+    print(model)
 
+    
     if flag:
         if Path(save_path+'/log.txt').exists():
             with open(save_path+'/log.txt','r') as f:
@@ -66,9 +67,7 @@ def train(show=None, args=None):
     optimizer = torch.optim.Adam(model.parameters(), lr=initial_lr) # try SGD
 
     get_train_loss_func = get_loss_function(cfg["training"]["loss"])
-
-    ### 5. 训练过程处理
-    train_proccesing = Train_Precess(save_path=save_path, on_show=show).train_proccesing
+    get_val_loss_func = get_metrics_function(cfg["val"]["metrics"])
 
     if cfg['rdd']:
         update_lr_paramter = update_paramter
@@ -79,5 +78,5 @@ def train(show=None, args=None):
     train_model(model, start_epoch=start_epoch, epochs=end_epoch, amp=amp, device=device,
                 n_classes=n_classes, trainloader=trainloader, valloader=valloader,
                 optimizer=optimizer, scheduler=scheduler, get_loss_func=get_train_loss_func,
-                train_proccesing=train_proccesing, per_n=per_n, update_lr_paramter=update_lr_paramter)
+                get_val_func=get_val_loss_func, per_n=per_n, update_lr_paramter=update_lr_paramter)
 
