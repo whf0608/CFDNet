@@ -10,10 +10,6 @@ from vdatasets import get_dataloader
 from optimizers_schedulers import get_optimizer_scheduler, update_paramter
 from config import get_model,model_dic
 
-# config_path = r'model_config/model_vgg_unet_config.json'
-# work_space = './model_test'
-# flag=None
-
 def train(show=None, args=None):
 
     config_path = args['config']
@@ -47,13 +43,9 @@ def train(show=None, args=None):
     trainloader, valloader = get_dataloader(cfg)
     
     ###3. 加载权重
-    model_func = model_dic[cfg['model']]
     cfg['model_param'].update({"n_classes":n_classes})
-    model = model_func(**cfg['model_param'])#3,n_classes
-    model = torch.nn.parallel.DataParallel(model)
-    print(model)
-    # model = torch.nn.parallel.DataParallel(get_model(cfg['model'])(3,n_classes))
-    
+    model = torch.nn.parallel.DataParallel(model_dic[cfg['model']](**cfg['model_param']))
+
     if flag:
         if Path(save_path+'/log.txt').exists():
             with open(save_path+'/log.txt','r') as f:
@@ -64,7 +56,6 @@ def train(show=None, args=None):
 
         if Path(load_weights).exists():
             print('loading weights', load_weights)
-            # model.load_state_dict(torch.load(load_weights, map_location='cpu'))
             model.load_state_dict(torch.load(load_weights, map_location='cpu'),strict=False)
     if pretrain:
         print('loading pretrain weights', weights_path)
@@ -73,10 +64,9 @@ def train(show=None, args=None):
     optimizer, scheduler = get_optimizer_scheduler(model,cfg)
     initial_lr = 0.001
     optimizer = torch.optim.Adam(model.parameters(), lr=initial_lr) # try SGD
-    #opt = optim.SGD(model_test.parameters(), lr = initial_lr, momentum=0.99)
 
     get_train_loss_func = get_loss_function(cfg["training"]["loss"])
-    get_val_loss_func = get_loss_function(cfg["training"]["loss"])
+
     ### 5. 训练过程处理
     train_proccesing = Train_Precess(save_path=save_path, on_show=show).train_proccesing
 
@@ -89,5 +79,5 @@ def train(show=None, args=None):
     train_model(model, start_epoch=start_epoch, epochs=end_epoch, amp=amp, device=device,
                 n_classes=n_classes, trainloader=trainloader, valloader=valloader,
                 optimizer=optimizer, scheduler=scheduler, get_loss_func=get_train_loss_func,
-                get_val_func=get_val_loss_func, train_proccesing=train_proccesing, per_n=per_n, update_lr_paramter=update_lr_paramter)
+                train_proccesing=train_proccesing, per_n=per_n, update_lr_paramter=update_lr_paramter)
 
