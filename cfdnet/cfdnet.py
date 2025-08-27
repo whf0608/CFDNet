@@ -79,7 +79,20 @@ class OutConv(nn.Module):
 
     def forward(self, x):
         return self.conv(x)
+class ConvBlock(nn.Module):
+    def __init__(self, in_channels, out_channels):
+        super(ConvBlock, self).__init__()
+        self.block = nn.Sequential(
+            nn.Conv2d(in_channels, out_channels, kernel_size=3, padding=1),
+            nn.BatchNorm2d(out_channels),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(out_channels, out_channels, kernel_size=3, padding=1),
+            nn.BatchNorm2d(out_channels),
+            nn.ReLU(inplace=True)
+        )
 
+    def forward(self, x):
+        return self.block(x)
 class Model(nn.Module):
     def __init__(self, n_channels=3, n_classes=2, bilinear=False,**arg):
         super(Model, self).__init__()
@@ -91,7 +104,13 @@ class Model(nn.Module):
             'layer4': 'feat4'
         }
         self.extractor = create_feature_extractor(self.encoder, return_nodes=return_nodes)
-    
+        self.decoder4 = ConvBlock(1024 * 2, 1024)
+        self.decoder3 = ConvBlock(512 * 2, 512)
+        self.decoder2 = ConvBlock(256* 2, 256)
+        self.upconv4 = nn.ConvTranspose2d(2048, 1024, kernel_size=2, stride=2)
+        self.upconv3 = nn.ConvTranspose2d(1024, 512, kernel_size=2, stride=2)
+        self.upconv2 = nn.ConvTranspose2d(512, 256, kernel_size=2, stride=2)
+  
         factor = 2 if bilinear else 1
         self.cov3 = Conv(256,128)
         self.up3 = Ups(256, 128 // factor, bilinear,input_same=True)
@@ -100,7 +119,6 @@ class Model(nn.Module):
         self.m2 =M(128,32,n_classes=n_classes)
         self.m3 =M(128,32,n_classes=n_classes)
         self.m4 =M(128,32,end=True,n_classes=n_classes)
-
         self.m5 =M0(128,32,n_classes=n_classes)
 
 
@@ -112,7 +130,22 @@ class Model(nn.Module):
 
     def forward(self, x, show=None):
         size0 = x.shape[-2:]
-        x= self.extractor(x)["feat1"]
+        
+        features = self.extractor(x)
+        x1,x2,x3,x = features["feat1"],features["feat2"],features["feat3"],features["feat4"]
+        
+        x = self.upconv4(x)
+        x = torch.cat((x, x3), dim=1)
+        x = self.decoder4(x)
+
+        x = self.upconv3(x)
+        x = torch.cat((x, x2), dim=1)
+        x = self.decoder3(x)
+
+        x = self.upconv2(x)
+        x = torch.cat((x, x1), dim=1)
+        x = self.decoder2(x)
+
         x_ = self.cov3(x)
         outx = self.up3(x, x_)
         size = outx.shape[-2:]
