@@ -32,8 +32,6 @@ This repository contains the code used to reproduce the results presented in the
    pip install -r requirements.txt
    ```
 
-## Usage
-
 
 ## Result
 
