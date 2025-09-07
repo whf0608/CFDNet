@@ -11,7 +11,6 @@ This repository contains the code used to reproduce the results presented in the
 
 - [Paper Information](#paper-information)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Result](#result)
 - [Acknowledgments](#acknowledgments)
 
